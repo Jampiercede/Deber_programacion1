@@ -40,6 +40,7 @@ public class MainClass {
             System.out.println("¡Felicidades, estás listo para pasar al siguiente nivel!");
         }
     }
+    
 }
 
 

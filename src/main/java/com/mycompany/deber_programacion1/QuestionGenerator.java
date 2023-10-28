@@ -1,5 +1,4 @@
 package com.mycompany.deber_programacion1;
-
 import java.util.Random;
 
 public class QuestionGenerator {
@@ -19,7 +18,6 @@ public class QuestionGenerator {
     
     public String generateQuestion(int operand1, int operand2, int operationType) {
         String question = "";
-
         switch(operationType) {
             case 1:
                 question = "¿Cuánto es " + operand1 + " + " + operand2 + "?";
@@ -37,13 +35,11 @@ public class QuestionGenerator {
                 question = "Operación no válida";
                 break;
         }
-        
         return question;
     }
-
+    
     public int calculateAnswer(int operand1, int operand2, int operationType) {
         int answer = 0;
-
         switch(operationType) {
             case 1:
                 answer = operand1 + operand2;
@@ -63,7 +59,7 @@ public class QuestionGenerator {
                 System.out.println("Operación no válida");
                 break;
         }
-
         return answer;
     }
 }
+

@@ -22,5 +22,10 @@ public class AnswerEvaluator {
         }
         return userAnswer == correctAnswer;
     }
+    public boolean evaluateAnswer(int operand1, int operand2, int userAnswer, int operationType, QuestionGenerator qg) {
+    int correctAnswer = qg.calculateAnswer(operand1, operand2, operationType);
+    return userAnswer == correctAnswer;
+}
+
 }
 
