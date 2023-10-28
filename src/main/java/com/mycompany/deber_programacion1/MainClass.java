@@ -5,22 +5,23 @@ public class MainClass {
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
         QuestionGenerator qg = new QuestionGenerator();
-        AnswerEvaluator ae = new AnswerEvaluator();
+        AnswerEvaluator ae = new AnswerEvaluator();  // Esta es la clase que tenías originalmente
         
         int correctAnswers = 0;
-        int totalQuestions = 0;
+        int totalQuestions = 0;  // Contador de preguntas totales
         
         int difficulty = ui.askDifficulty();
         int operationType = ui.askOperationType();
         
-        while (correctAnswers < 10) {
+        // Usaré un while loop como en tu versión original
+        while (correctAnswers < 10) {  // Seguir preguntando hasta que el usuario tenga 10 respuestas correctas
             int[] operands = qg.generateOperands(difficulty);
             String question = qg.generateQuestion(operands[0], operands[1], operationType);
             
             ui.showQuestion(question);
             int userAnswer = ui.getUserAnswer();
             
-            boolean isCorrect = ae.evaluateAnswer(operands[0], operands[1], userAnswer, operationType);
+            boolean isCorrect = ae.evaluateAnswer(operands[0], operands[1], userAnswer, operationType);  // Usar AnswerEvaluator
             
             if (isCorrect) {
                 ui.showFeedback("¡Excelente!");
@@ -40,4 +41,5 @@ public class MainClass {
         }
     }
 }
+
 

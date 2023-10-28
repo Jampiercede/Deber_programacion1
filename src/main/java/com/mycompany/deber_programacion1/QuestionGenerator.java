@@ -1,26 +1,25 @@
 package com.mycompany.deber_programacion1;
 
-import java.security.SecureRandom;
+import java.util.Random;
 
 public class QuestionGenerator {
     
-    SecureRandom random = new SecureRandom();
-    
-    // Genera dos operandos basados en el nivel de dificultad
-    public int[] generateOperands(int difficulty) {
-        int lowerBound = (int) Math.pow(10, difficulty - 1);
-        int upperBound = (int) Math.pow(10, difficulty) - 1;
-        
-        int operand1 = lowerBound + random.nextInt(upperBound - lowerBound + 1);
-        int operand2 = lowerBound + random.nextInt(upperBound - lowerBound + 1);
-        
-        return new int[]{operand1, operand2};
+    private Random random;
+
+    public QuestionGenerator() {
+        this.random = new Random();
     }
     
-    // Genera una pregunta en forma de cadena de texto
+    public int[] generateOperands(int difficulty) {
+        int[] operands = new int[2];
+        operands[0] = random.nextInt(difficulty * 10) + 1;
+        operands[1] = random.nextInt(difficulty * 10) + 1;
+        return operands;
+    }
+    
     public String generateQuestion(int operand1, int operand2, int operationType) {
         String question = "";
-        
+
         switch(operationType) {
             case 1:
                 question = "¿Cuánto es " + operand1 + " + " + operand2 + "?";
@@ -29,7 +28,7 @@ public class QuestionGenerator {
                 question = "¿Cuánto es " + operand1 + " - " + operand2 + "?";
                 break;
             case 3:
-                question = "¿Cuánto es " + operand1 + " x " + operand2 + "?";
+                question = "¿Cuánto es " + operand1 + " * " + operand2 + "?";
                 break;
             case 4:
                 question = "¿Cuánto es " + operand1 + " / " + operand2 + "?";
@@ -40,5 +39,31 @@ public class QuestionGenerator {
         }
         
         return question;
+    }
+
+    public int calculateAnswer(int operand1, int operand2, int operationType) {
+        int answer = 0;
+
+        switch(operationType) {
+            case 1:
+                answer = operand1 + operand2;
+                break;
+            case 2:
+                answer = operand1 - operand2;
+                break;
+            case 3:
+                answer = operand1 * operand2;
+                break;
+            case 4:
+                if(operand2 != 0) {
+                    answer = operand1 / operand2;
+                }
+                break;
+            default:
+                System.out.println("Operación no válida");
+                break;
+        }
+
+        return answer;
     }
 }
