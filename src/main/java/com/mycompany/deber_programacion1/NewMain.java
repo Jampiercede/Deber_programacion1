@@ -22,6 +22,16 @@ public static void main(String[] args) {
     } else {
         System.out.println("Incorrecto.");
     }
+    System.out.println("Cuánto es " + numero1 + " - " + numero2 + "?");
+int respuestaResta = entrada.nextInt();
+
+if (respuestaResta == (numero1 - numero2)) {
+    System.out.println("Correcto!");
+} else {
+    System.out.println("Incorrecto.");
+}   
+      
+    
 }
     
     
