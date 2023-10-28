@@ -30,7 +30,14 @@ if (respuestaResta == (numero1 - numero2)) {
 } else {
     System.out.println("Incorrecto.");
 }   
-      
+System.out.println("Cuánto es " + numero1 + " * " + numero2 + "?");
+int respuestaMultiplicacion = entrada.nextInt();
+
+if (respuestaMultiplicacion == (numero1 * numero2)) {
+    System.out.println("Correcto!");
+} else {
+    System.out.println("Incorrecto.");
+}      
     
 }
     
