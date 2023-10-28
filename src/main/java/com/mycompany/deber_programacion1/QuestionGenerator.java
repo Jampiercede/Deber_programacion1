@@ -1,30 +1,44 @@
 package com.mycompany.deber_programacion1;
+
 import java.security.SecureRandom;
 
 public class QuestionGenerator {
     
-    private SecureRandom random = new SecureRandom();
+    SecureRandom random = new SecureRandom();
     
-    public String generateQuestion(int difficulty, int operationType) {
-        int operand1 = getRandomNumber(difficulty);
-        int operand2 = getRandomNumber(difficulty);
-        switch (operationType) {
-            case 1:
-                return "¿Cuánto es " + operand1 + " más " + operand2 + "?";
-            case 2:
-                return "¿Cuánto es " + operand1 + " menos " + operand2 + "?";
-            case 3:
-                return "¿Cuánto es " + operand1 + " por " + operand2 + "?";
-            case 4:
-                return "¿Cuánto es " + operand1 + " dividido " + operand2 + "?";
-            default:
-                return "Operación no soportada";
-        }
+    // Genera dos operandos basados en el nivel de dificultad
+    public int[] generateOperands(int difficulty) {
+        int lowerBound = (int) Math.pow(10, difficulty - 1);
+        int upperBound = (int) Math.pow(10, difficulty) - 1;
+        
+        int operand1 = lowerBound + random.nextInt(upperBound - lowerBound + 1);
+        int operand2 = lowerBound + random.nextInt(upperBound - lowerBound + 1);
+        
+        return new int[]{operand1, operand2};
     }
     
-    private int getRandomNumber(int difficulty) {
-        int bound = (int) Math.pow(10, difficulty) - 1;
-        return random.nextInt(bound) + 1;
+    // Genera una pregunta en forma de cadena de texto
+    public String generateQuestion(int operand1, int operand2, int operationType) {
+        String question = "";
+        
+        switch(operationType) {
+            case 1:
+                question = "¿Cuánto es " + operand1 + " + " + operand2 + "?";
+                break;
+            case 2:
+                question = "¿Cuánto es " + operand1 + " - " + operand2 + "?";
+                break;
+            case 3:
+                question = "¿Cuánto es " + operand1 + " x " + operand2 + "?";
+                break;
+            case 4:
+                question = "¿Cuánto es " + operand1 + " / " + operand2 + "?";
+                break;
+            default:
+                question = "Operación no válida";
+                break;
+        }
+        
+        return question;
     }
 }
-
